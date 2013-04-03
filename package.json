@@ -1,0 +1,12 @@
+{  
+  "name": "rtcserver",
+  "version": "0.0.1",
+  "dependencies" : {
+    "express": "",
+    "socket.io": "",
+    "crypto": ""
+  },
+  "scripts": {
+    "start" : "node rtcserver.js"
+  }
+}
