@@ -1,0 +1,27 @@
+#conversation {
+	margin: 0 auto 20px auto;
+}
+
+.remoteContainer {
+	position: relative;
+	background: #000000;
+	overflow: hidden;
+	color: #FFFFFF;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.localContainer {
+	position: absolute;
+	border: 1px solid #CCCCCC;
+	bottom: 1px;
+	right: 1px;
+	width: 150px;
+	height: 110px;
+	z-index: 12;
+}
+
+.endCall {
+	padding-top: 5px;
+}
