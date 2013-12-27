@@ -1,12 +1,56 @@
-{  
-  "name": "rtcserver",
+{
+  "name": "conpherence",
   "version": "0.0.1",
-  "dependencies" : {
-    "express": "",
-    "socket.io": "",
-    "crypto": ""
+  "description": "node.js application using librtc",
+  "keywords": [
+    "conpherence"
+  ],
+  "author": {
+	"name": "Tomas Basham",
+	"email": "me@tomasbasham.co.uk",
+	"url": "tomasbasham.co.uk"
   },
+  "main": "server.coffee",
   "scripts": {
-    "start" : "node rtcserver.js"
-  }
+	"test": "grunt test",
+	"start": "coffee server.coffee"
+  },
+  "dependencies": {
+	"express": "~3.4.x",
+	"express-namespace": "~0.1.x",
+	"hiredis": "~0.1.x",
+	"redis": "~0.10.x",
+	"socket.io": "~0.9.x",
+	"coffee-script": "~1.6.x",
+	"colors": "~0.6.x",
+	"jade": "~0.35.x"
+  },
+  "devDependencies": {
+	"mocha": "~1.12.x",
+	"should": "~1.2.x",
+	"grunt": "~0.4.x",
+	"grunt-cli": "~0.1.x",
+	"grunt-autoprefixer": "~0.6.x",
+	"grunt-contrib-clean": "~0.5.x",
+	"grunt-contrib-coffee": "~0.7.x",
+	"grunt-contrib-concat": "~0.3.x",
+	"grunt-contrib-copy": "~0.4.x",
+	"grunt-contrib-cssmin": "~0.6.x",
+	"grunt-contrib-jshint": "~0.7.x",
+	"grunt-contrib-nodeunit": "~0.2.x",
+	"grunt-contrib-sass": "~0.5.x",
+	"grunt-contrib-uglify": "~0.2.x",
+	"grunt-contrib-watch": "~0.5.x",
+	"grunt-ember-templates": "~0.4.x",
+	"grunt-express-server": "~0.4.x"
+  },
+  "engines": {
+	"node": ">=0.8.0",
+	"npm": ">=1.2.10"
+  },
+  "licenses": [
+	  {
+		  "type": "RPL-1.5"
+	  }
+  ]
 }

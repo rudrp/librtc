@@ -1,0 +1,25 @@
+<!-- Secondary navigation -->
+<nav id="primary">
+	<header id="logo">
+		<img src="/assets/images/conpherence.png" alt="Conpherence" />
+	</header>
+	<div id="search">
+		<form id="searchbox">
+			<fieldset data-role="controlgroup">
+				<input id="search-item" class="form-control form-control-inline" type="text" value="" placeholder="username" />
+			</fieldset>
+		</form>
+	</div>
+	<ul id="list">
+		{{#each connections}}
+		<li>
+			{{name}}
+		</li>
+		{{/each}}
+	</ul>
+</nav>
+
+<!-- Main section -->
+<section id="maincontainer">
+	{{outlet}}
+</section>

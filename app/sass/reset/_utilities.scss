@@ -1,0 +1,13 @@
+@mixin global-styles {
+	* {
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
+	}
+	a {
+		text-decoration: none;
+	}
+	ul {
+		display: block;
+		vertical-align: top;
+	}
+}

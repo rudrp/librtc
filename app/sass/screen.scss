@@ -1,0 +1,519 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "reset/reset";
+@import "reset/utilities";
+
+// Mixins
+@include global-reset;
+@include global-styles;
+
+// Default Colours
+$cWhite: #ffffff;
+$cBlack: #000000;
+$cLightGrey: #f2f2f2;
+$cDarkGrey: #dadada;
+$cHeader: #0093d0;
+
+// Font Colours
+$cFont: #666666;
+$cLink: #999999;
+
+// Primary and Secondary Colours
+$cPrimary: #497eac;
+$cSecondary: #6ba0ce;
+
+// Notification Colours
+$cInfo: #dce7ed;
+$cWarning: #ededdc;
+$cError: #ad6262;
+
+// Styles
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  margin: 0 auto;
+  line-height: normal;
+}
+
+body {
+  margin: 0;
+  background: $cDarkGrey;
+  color: $cFont;
+  font-family: "HelveticaNeue", "Lucida Grande", sans-serif;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+p {
+  line-height: 20px;
+  margin-bottom: 14px;
+}
+
+p.warning {
+  background: $cWarning;
+  font-style: italic;
+  line-height: 16px;
+  padding-left: 25px;
+  margin-left: 1px;
+}
+
+a {
+  color: $cLink;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+strong {
+  font-weight: bold;
+}
+
+// Extensions
+button, input, select, textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+button, input {
+  line-height: normal;
+}
+
+button, select {
+  text-transform: none;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.nomargin {
+  margin: 0;
+}
+
+.blue {
+  color: $cInfo;
+}
+
+.amber {
+  color: $cWarning;
+}
+
+.red {
+  color: $cError;
+}
+
+.clear {
+  clear: both;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#application, .wrapper {
+  height: 100%;
+}
+
+// Primary navigation
+nav#primary {
+  background: $cWhite;
+  border-right: 1px solid #ccc;
+  float: left;
+  height: 100%;
+  width: 300px;
+  -webkit-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
+  -moz-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
+  -o-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
+  box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
+}
+
+nav#primary ul {
+  border-bottom: 1px solid #fff;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+nav#primary ul li a {
+  border-bottom: 1px solid #dfdfdf;
+  color: #8a8a8a;
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 18px;
+  padding: 22px 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav#primary ul li a:hover {
+  background: $cLightGrey;
+}
+
+nav#primary ul li.active a {
+  background-color: $cPrimary;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($cSecondary), to($cPrimary));
+  background-image: -webkit-linear-gradient(top, from($cSecondary), to($cPrimary));
+  background-image: -moz-linear-gradient(top, from($cSecondary), to($cPrimary));
+  background-image: -o-linear-gradient(top, from($cSecondary), to($cPrimary));
+  background-image: -ms-linear-gradient(top, from($cSecondary), to($cPrimary));
+  background-image: linear-gradient(top, from($cSecondary), to($cPrimary));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$cSecondary', EndColorStr='$cPrimary');
+  border-bottom: 1px solid #467cad;
+  border-top: 1px solid #699fd0;
+  color: #fff;
+  text-shadow: 0 1px 0 #104266;
+}
+
+nav#primary ul li:first-child a {
+  border-top: none;
+}
+
+// Logo
+nav#primary header#logo {
+	padding: 10px 10px 0 10px;
+	background: $cHeader;
+	text-align: center;
+	
+	& img {
+		width: 80%;
+	}
+}
+
+// Search
+nav#primary div#search {
+	padding: 0 10px 10px 10px;
+	background: $cHeader;
+}
+
+#searchbox input {
+	width: 100%;
+}
+
+// Main section
+section#maincontainer {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Video
+#conversation {
+	width: 100%;
+	height: 100%;
+}
+
+.remoteContainer {
+	background: #000000;
+	overflow: hidden;
+	color: #FFFFFF;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.localContainer {
+	position: absolute;
+	border: 1px solid #CCCCCC;
+	bottom: 0px;
+	right: 0px;
+	width: 300px;
+	height: 226px;
+	z-index: 9999;
+}
+
+// Flash Alerts
+.flash {
+  display: none;
+  text-align: center;
+}
+
+.flash.alert {
+  color: #a6a450;
+}
+
+// Notifications
+#notifications {
+  background: #f1f1f1;
+  bottom: 0;
+  display: none;
+  margin-bottom: -1px;
+  min-height: 48px;
+  overflow: hidden;
+  position: absolute;
+  text-align: right;
+  width: 251px;
+}
+
+#notifications > a {
+  background: $cBlack;
+  display: block;
+  font-size: 11px;
+  padding-bottom: 20px;
+  padding-right: 8px;
+  text-decoration: none;
+  text-transform: lowercase;
+  text-shadow: 0 1px 0 $cWhite;
+  position: relative;
+  z-index: 2;
+}
+
+#notifications ul {
+  bottom: 0;
+  text-align: left;
+  padding-bottom: 6px;
+  position: absolute;
+}
+
+#notifications ul li {
+  line-height: 28px;
+  margin-bottom: -6px;
+  padding-left: 8px;
+  position: relative;
+}
+
+#notifications ul li.error {
+  color: #ad6262;
+}
+
+#notifications ul li span {
+  margin-right: 4px;
+}
+
+#notifications .time {
+  color: #bbb;
+  font-size: 11px;
+  position: absolute;
+  right: 4px;
+  top: 5px;
+}
+
+// Obtrusive notifications
+.notification {
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 7px;
+  padding: 0 14px 0 9px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.notification .close {
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+}
+
+.notification .icon {
+  display: block;
+  float: left;
+  margin-right: 7px;
+  height: 24px;
+}
+
+.notification.success {
+  background: #deeddc;
+  color: #5ba54f;
+  text-shadow: 0 1px 0 #d6fdcf;
+}
+
+.notification.success .icon {
+  // Add a tick shape
+}
+
+.notification.success .close {
+  color: #5ba54f;
+}
+
+.notification.error {
+  background: #eddcdc;
+  color: #a54f4f;
+  text-shadow: 0 1px 0 #fdcfcf;
+}
+
+.notification.error .icon {
+  // Add a cross shape
+}
+
+.notification.error .close {
+  color: #a54f4f;
+}
+
+.notification.information {
+  background: #dce7ed;
+  color: #5089a6;
+  text-shadow: 0 1px 0 #cfedfc;
+}
+
+.notification.information .icon {
+  // Add an question mark
+}
+
+.notification.information .close {
+  color: #5089a6;
+}
+
+.notification.warning {
+  background: #ededdc;
+  color: #a6a450;
+  text-shadow: 0 1px 0 #fcfccf;
+}
+
+.notification.warning .icon {
+  // Add a exclamation mark
+}
+
+.notification.warning .close {
+  color: #a6a450;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+// Forms
+form .inputgroup {
+  position: relative;
+  margin: 0 0 20px;
+  width: 100%;
+  clear: both;
+}
+
+form .actiongroup {
+  clear: both;
+  overflow: hidden;
+}
+
+form .inputgroup input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 20px;
+  outline: 0;
+  background: #FBFBFB;
+  border: 1px solid #CCC;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 2px #ECECEC;
+  -moz-box-shadow: inset 0 1px 2px #ECECEC;
+  -o-box-shadow: inset 0 1px 2px #ECECEC;
+  box-shadow: inset 0 1px 2px #ECECEC;
+}
+
+form .inputgroup .addon {
+  padding: 10px;
+  border: 1px 1px 1px 0 solid #CCC;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 99px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-control.error {
+	border-color: #F00;
+}
+
+.form-control-inline {
+	display: inline;
+	width: inherit;
+}
+
+fieldset {
+	padding: 4px 0;
+	border: 0;
+}
+
+@import "responsive/screen-responsive-768px";
+@import "responsive/screen-responsive-992px";
+@import "responsive/screen-responsive-1200px";

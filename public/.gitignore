@@ -4,17 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore cache files.
-.sass-cache/
-
-# Ignore package manager files.
-build/
-node_modules/
-npm-debug.log
-
-# Ignore other unneeded files.
-*.swp
-*~
-.project
-.DS_Store
-.idea
+# Ignore compiled files.
+#*.js
+#*.css

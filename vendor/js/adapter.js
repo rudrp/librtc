@@ -2,6 +2,7 @@ var RTCPeerConnection = null;
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
+var getMediaStream = null;
 var webrtcDetectedBrowser = null;
 
 if (navigator.mozGetUserMedia) {
@@ -34,6 +35,10 @@ if (navigator.mozGetUserMedia) {
     to.mozSrcObject = from.mozSrcObject;
     to.play();
   };
+  
+  getMediaStream = function(element) {
+      return element.mozSrcObject;
+  };
 
   // Fake get{Video,Audio}Tracks
   MediaStream.prototype.getVideoTracks = function() {
@@ -64,6 +69,10 @@ if (navigator.mozGetUserMedia) {
   reattachMediaStream = function(to, from) {
 	console.log("Reattaching media stream");
     to.src = from.src;
+  };
+  
+  getMediaStream = function(element) {
+      return element.src;
   };
 
   // The representation of tracks in a stream is changed in M26.
