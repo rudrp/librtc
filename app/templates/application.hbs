@@ -1,25 +1,19 @@
-<!-- Secondary navigation -->
+<!-- Primary navigation -->
 <nav id="primary">
-	<header id="logo">
-		<img src="/assets/images/conpherence.png" alt="Conpherence" />
-	</header>
-	<div id="search">
-		<form id="searchbox">
-			<fieldset data-role="controlgroup">
-				<input id="search-item" class="form-control form-control-inline" type="text" value="" placeholder="username" />
-			</fieldset>
-		</form>
+	<div id="users-header">
+		<header class="masthead">
+			<h1>{{t users.title}}<span class="widget count">{{controller.controllers.users.usersCount}}</span></h1>
+		</header>
 	</div>
-	<ul id="list">
-		{{#each connections}}
-		<li>
-			{{name}}
-		</li>
-		{{/each}}
-	</ul>
+	<div id="users-list touch">
+		{{outlet}}
+	</div>
 </nav>
 
 <!-- Main section -->
 <section id="maincontainer">
-	{{outlet}}
+	{{#base-modal}}This is the content of the modal{{/base-modal}}
+	<div id="conversation">
+		{{view Conpherence.VideoView}}
+	</div>
 </section>

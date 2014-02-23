@@ -1,4 +1,30 @@
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-	
+  #nprogress .spinner-icon {
+    display: block;
+  }
+  
+  // Header
+  .masthead .action {
+    display: none;
+  }
+  
+  // Primary navigation
+  nav#primary {
+    float: left;
+	width: 320px;
+	border-right: 1px solid $cBorder;
+  }
+  
+  nav#primary ul {
+    width: 320px;
+  }
+  
+  nav#primary ul li a {
+    border-right: 1px solid $cBorder;
+  }
+  
+  #maincontainer header {
+    display: none;
+  }	
 }

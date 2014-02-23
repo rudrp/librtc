@@ -2,7 +2,6 @@
 express   = require 'express'
 namespace = require 'express-namespace'
 socket    = require 'socket.io'
-redis     = require 'redis'
 color     = require 'colors'
 http      = require 'http'
 path      = require 'path'
@@ -11,18 +10,8 @@ path      = require 'path'
 app = express()
 env = app.settings.env
 
-# Keystore.
-if process.env.REDISTOGO_URL
-    rtg = require("url").parse process.env.REDISTOGO_URL
-    keystore = redis.createClient rtg.port, rtg.hostname
-
-    keystore.auth rtg.auth.split(":")[1]
-else
-    keystore = redis.createClient();
-
 # Import configuration.
 config = require("./config/configuration") app, express, env
-ember  = require("./routes/ember")
 
 # All environments
 app.configure ->
@@ -42,18 +31,13 @@ app.configure ->
     app.use app.router
     
     # Use the favicon middleware.
-    app.use express.favicon()
-    
-    # This is to pass the slugs onto emberjs. Otherwise one has to navigate
-    # from index in order to visit any other page. This is not ideal and
-    # prevents bookmarking.
-    app.use ember.default
+    app.use express.favicon "/assets/images/favicon.ico"
 
-# Import routes.
+# Define routes.
 routes = require("./routes") app
 
 # Create the http server.
-server = http.createServer(app)
+server = http.createServer app
 
 # Have the websocket server listen on the server
 io = socket.listen server
@@ -66,12 +50,17 @@ server.listen config.port, ->
 io.sockets.on "connection", (socket) ->
     console.log "#{new Date()} Connection established."
     
-    # When a user send an SDP message broadcast to all users 
+    # When a user send an SDP message broadcast to all users
     # in the room.
     socket.on "message", (message) ->
         console.log "#{new Date()} Received Message, broadcasting: #{message}"
         socket.broadcast.to(message.channel).emit "message", message
 
+    socket.on "find", (message) ->
+        response = {uuid: message.uuid, type: message.type}
+        response[message.type] = [{id: "1", name: "Tomas Basham"}, {id: "2", name: "Daniel Basham"}]
+        socket.emit "message", response
+        
     # When the user subscribes to a channel.
     socket.on "subscribe", (message) ->
         # Create a new room to hold the user. This will be
@@ -81,7 +70,7 @@ io.sockets.on "connection", (socket) ->
 
     # When the user unsubscribes from a channel.
     socket.on "unsubscribe", (message) ->
-        # Leave a room. This will delete the room if we remove 
+        # Leave a room. This will delete the room if we remove
         # the last user in this room.
         socket.leave message.channel
         socket.broadcast.to(message.channel).emit "message", type: "bye"

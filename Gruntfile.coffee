@@ -4,12 +4,13 @@ module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
         
-        jshint:
-            all: ['Gruntfile.coffee', 'app/coffeescript/**/*.coffee']
+        coffeelint:
+            options: grunt.file.readJSON('.coffeelint')
+            all: ['**/*.coffee', '!build/**/*.coffee', '!node_modules/**/*.coffee', '!public/**/*.coffee']
         
         # Before generating any new files, remove any previously-created files.
         clean:
-            build: 
+            build:
                 src: ['build']
             stylesheets:
                 src: ['build/**/*.css', '!build/application.css']
@@ -73,7 +74,7 @@ module.exports = (grunt) ->
                 files: [
                     'public/stylesheets/screen.css': ['build/stylesheets/screen.css'],
                     'public/stylesheets/print.css': ['build/stylesheets/print.css'],
-                    'public/stylesheets/ie.css': ['build/stylesheets/ie.css'] 
+                    'public/stylesheets/ie.css': ['build/stylesheets/ie.css']
                 ]
         
         # Configuration to be run.
@@ -114,19 +115,19 @@ module.exports = (grunt) ->
         
         # Unit tests.
         nodeunit:
-            tasks: ['test/*_test.js']
+            all: ['tests/**/*_test.coffee']
     
     # Actually load this plugin's task(s).
     grunt.loadTasks 'tasks'
 
     # The clean plugin helps in testing.
     grunt.loadNpmTasks 'grunt-autoprefixer'
+    grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-contrib-copy'
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
-    grunt.loadNpmTasks 'grunt-contrib-jshint'
     grunt.loadNpmTasks 'grunt-contrib-nodeunit'
     grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -138,16 +139,19 @@ module.exports = (grunt) ->
     grunt.registerTask 'scripts', 'Compiles the javascript.', ['coffee', 'emberTemplates', 'uglify', 'clean:scripts']
     
     # Compile stylesheets.
-    grunt.registerTask 'stylesheets', 'Compiles the stylesheets.', ['sass', 'autoprefixer', 'cssmin', 'clean:stylesheets']
+    grunt.registerTask 'stylesheets', 'Compiles the stylesheets.',
+        ['sass', 'autoprefixer', 'cssmin', 'clean:stylesheets']
     
     # Compile static assets.
-    grunt.registerTask 'build', 'Compiles all of the assets and copies the files to the build directory.', ['clean:build', 'copy', 'scripts', 'stylesheets']
+    grunt.registerTask 'build', 'Compiles all of the assets and copies the files to the build directory.',
+        ['clean:build', 'copy', 'scripts', 'stylesheets']
 
     # Whenever the "test" task is run, first clean the "build" dir, then run this.
-    grunt.registerTask 'test', 'Run tests on the application', ['build', 'jshint', 'nodeunit']
+    grunt.registerTask 'test', 'Run tests on the application', ['coffeelint', 'nodeunit']
     
     # Run the tasks to build, spin up a server and watch
-    grunt.registerTask 'server', 'Watches the project for changes, automatically builds them and runs a server.', ['build', 'express:dev', 'watch']
+    grunt.registerTask 'server', 'Watches the project for changes, automatically builds them and runs a server.',
+        ['build', 'express:dev', 'watch']
     
     # Default task.
     grunt.registerTask 'default', 'server'

@@ -1,0 +1,13 @@
+<div {{bind-attr class=":modal :fade isVisible:in:out"}}>
+	<div class="modal-header">
+		<h2 class="app-icon-large">{{view.name}}</h2>
+	</div>
+	
+	<div class="modal-body">
+		{{yield}}
+	</div>
+	
+	<div class="modal-footer">
+		<button class="btn btn-success" {{action "submit" this target="view"}}>{{t modal.submit}}</button>
+	</div>  
+</div>

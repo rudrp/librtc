@@ -2,20 +2,20 @@
  * Import this file using the following HTML or equivalent:
  * <link href="assets/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 * {
-	color: black;
-	background: transparent;
-	text-shadow: none;
-	-webkit-filter: none;
-	-moz-filter: none;
-	-o-filter: none;
-	filter: none;
+  color: black;
+  background: transparent;
+  text-shadow: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  filter: none;
 }
 
 html, body {
-	margin: 0.5cm auto;
-	width: 6.5in;
+  margin: 0.5cm auto;
+  width: 6.5in;
 }
 
 @page {
-	margin: 1in;
+  margin: 1in;
 }

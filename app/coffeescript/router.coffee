@@ -1,4 +1,5 @@
 Conpherence.Router.map ->
+    @resource 'users', path: '/'
     @route 'missing', path: '/*path'
 
 Conpherence.Router.reopen

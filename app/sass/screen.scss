@@ -16,6 +16,7 @@ $cBlack: #000000;
 $cLightGrey: #f2f2f2;
 $cDarkGrey: #dadada;
 $cHeader: #0093d0;
+$cBorder: #dfdfdf;
 
 // Font Colours
 $cFont: #666666;
@@ -98,36 +99,20 @@ strong {
   font-weight: bold;
 }
 
+input {
+  outline: none;
+}
+
+section {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 // Extensions
-button, input, select, textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: 100%;
-}
-
-button, input {
-  line-height: normal;
-}
-
-button, select {
-  text-transform: none;
-}
-
-input, button, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-}
-
-input, button, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+.container {
+  width: inherit;
+  height: 100%;
 }
 
 .nomargin {
@@ -150,43 +135,134 @@ input, button, select, textarea {
   clear: both;
 }
 
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .bottom {
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-#application, .wrapper {
-  height: 100%;
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+.fade {
+	-webkit-transition: opacity .5s ease-in-out;
+	-moz-transition: opacity .5s ease-in-out;
+	-ms-transition: opacity .5s ease-in-out;
+	-o-transition: opacity .5s ease-in-out;
+	transition: opacity .5s ease-in-out;
+}
+
+.fade.in {
+	opacity: 1;
+}
+
+.fade.out {
+	opacity: 0;
+}
+
+// Progress
+#nprogress {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+}
+
+#nprogress .bar {
+  position: fixed;
+  width: 100%;
+  height: 2px;
+  background-color: #1BDB85;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+#nprogress .spinner-icon {
+  display: none;
+}
+
+// Modal
+.modal {
+	position: fixed;
+	margin-top: -100px;
+	margin-left: -150px;
+	width: 300px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+}
+
+// Header
+.masthead {
+  padding: 23px 14px;
+  width: 100%;
+  background: $cHeader;
+  color: $cWhite;
+  text-align: center;
+}
+
+.masthead h1 {
+  display: inline-block;
+}
+
+.masthead .action {
+  padding-top: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.masthead .empty {
+  margin-right: 20px;
+}
+
+.masthead i {
+  color: $cWhite;
+  font-size: 18pt;
 }
 
 // Primary navigation
 nav#primary {
   background: $cWhite;
-  border-right: 1px solid #ccc;
-  float: left;
   height: 100%;
-  width: 300px;
-  -webkit-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
-  -moz-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
-  -o-box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
-  box-shadow: 1px 0px 15px rgba(200, 200, 200, 0.8);
+  width: 100%;
+  z-index: 999;
 }
 
 nav#primary ul {
-  border-bottom: 1px solid #fff;
+  position: absolute;
+  border-bottom: 1px solid $cWhite;
   overflow-y: scroll;
   width: 100%;
+  height: 100%;
+  top: 75px;
 }
 
 nav#primary ul li a {
-  border-bottom: 1px solid #dfdfdf;
-  color: #8a8a8a;
   display: block;
+  padding: 28px 14px;
   font-size: 11px;
   font-weight: bold;
   line-height: 18px;
-  padding: 22px 14px;
+  color: $cFont;
+  border-bottom: 1px solid $cBorder;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -206,7 +282,7 @@ nav#primary ul li.active a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$cSecondary', EndColorStr='$cPrimary');
   border-bottom: 1px solid #467cad;
   border-top: 1px solid #699fd0;
-  color: #fff;
+  color: $cWhite;
   text-shadow: 0 1px 0 #104266;
 }
 
@@ -215,8 +291,9 @@ nav#primary ul li:first-child a {
 }
 
 // Logo
-nav#primary header#logo {
+nav#primary header #logo {
 	padding: 10px 10px 0 10px;
+	width: 100%;
 	background: $cHeader;
 	text-align: center;
 	
@@ -235,13 +312,6 @@ nav#primary div#search {
 	width: 100%;
 }
 
-// Main section
-section#maincontainer {
-  height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
 // Video
 #conversation {
 	width: 100%;
@@ -249,12 +319,13 @@ section#maincontainer {
 }
 
 .remoteContainer {
+	position: relative;
 	background: #000000;
 	overflow: hidden;
 	color: #FFFFFF;
 	width: 100%;
 	height: 100%;
-	z-index: 0;
+	z-index: -1;
 }
 
 .localContainer {
@@ -264,7 +335,26 @@ section#maincontainer {
 	right: 0px;
 	width: 300px;
 	height: 226px;
-	z-index: 9999;
+	z-index: -1;
+}
+
+video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+// Widgets
+.widget {
+  padding: 4px 8px;
+  margin: 8px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.count {
+  background-color: red;
+  font-size: 12pt;
 }
 
 // Flash Alerts
@@ -415,34 +505,6 @@ section#maincontainer {
   color: #a6a450;
 }
 
-// Buttons
-.btn {
-  display: inline-block;
-  padding: 4px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.428571429;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-
 // Forms
 form .inputgroup {
   position: relative;
@@ -479,39 +541,6 @@ form .inputgroup input {
 form .inputgroup .addon {
   padding: 10px;
   border: 1px 1px 1px 0 solid #CCC;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  height: 30px;
-  padding: 4px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 99px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-.form-control.error {
-	border-color: #F00;
-}
-
-.form-control-inline {
-	display: inline;
-	width: inherit;
-}
-
-fieldset {
-	padding: 4px 0;
-	border: 0;
 }
 
 @import "responsive/screen-responsive-768px";

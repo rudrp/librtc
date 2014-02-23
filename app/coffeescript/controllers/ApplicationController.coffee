@@ -1,2 +1,2 @@
-Conpherence.ApplicationController = Ember.ArrayController.extend
-    connections: []
+Conpherence.ApplicationController = Ember.Controller.extend
+    needs: ['users']

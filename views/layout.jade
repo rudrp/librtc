@@ -3,13 +3,14 @@ html(lang='en')
   head
     meta(http-equiv='Content-type' content='text/html; charset=utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
-    meta(name='description' content='Safeharbour')
+    meta(name='description' content='Conpherence')
     meta(name='apple-mobile-web-app-capable' content='yes')
     meta(name='apple-mobile-web-app-status-bar-style' content='black')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     title= title
   
     // Stylesheets
+    link(href='/assets/stylesheets/nprogress.css' media='screen,projection' rel='stylesheet' type='text/css')
     link(href='/assets/stylesheets/screen.css' media='screen,projection,print' rel='stylesheet' type='text/css')
     link(href='/assets/stylesheets/print.css' media='print' rel='stylesheet' type='text/css')
   
@@ -25,19 +26,20 @@ html(lang='en')
   
   body
     block content
-    #application
-      // This is where ember will embed templates 
     
     // Websocket
     script(src='/socket.io/socket.io.js' type='text/javascript' charset='utf-8')
     
     // Include External JavaScript
-    script(src='http://code.jquery.com/jquery-1.9.1.min.js' type='text/javascript' charset='utf-8')
+    script(src='http://code.jquery.com/jquery-1.10.2.min.js' type='text/javascript' charset='utf-8')
     
     // Static JavaScript
     script(src='/assets/js/handlebars-v1.1.2.js' type='text/javascript' charset='utf-8')
     script(src='/assets/js/ember-v1.2.0.js' type='text/javascript' charset='utf-8')
     script(src='/assets/js/ember-data-v1.0.0.js' type='text/javascript' charset='utf-8')
+    script(src='/assets/js/nprogress.js' type='text/javascript' charset='utf-8')
     script(src='/assets/js/adapter.js' type='text/javascript' charset='utf-8')
+    script(src='/assets/js/plurals.js' type='text/javascript' charset='utf-8')
+    script(src='/assets/js/i18n.js' type='text/javascript' charset='utf-8')
     script(src='/assets/librtc.js' type='text/javascript' charset='utf-8')
     script(src='/assets/js/application.js' type='text/javascript' charset='utf-8')
